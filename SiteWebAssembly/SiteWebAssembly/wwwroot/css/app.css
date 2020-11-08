@@ -1,5 +1,7 @@
 ﻿@import "components/reset.css";
 @import "components/banner.css";
+@import "components/header.css";
+@import "components/content.css";
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
@@ -33,9 +35,10 @@ app {
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #d6d5d5;
+/*        background-color: #f7f7f7;
+        border-bottom: 1px solid #d6d5d5;*/
         justify-content: flex-end;
+        font-size: 30px;
     }
 
         .main .top-row > a, .main .top-row .btn-link {
@@ -99,10 +102,10 @@ app {
                 color: white;
             }
 
-.content {
+/*.content {
     padding-top: 1.1rem;
 }
-
+*/
 .navbar-toggler {
     background-color: rgba(255, 255, 255, 0.1);
 }
@@ -170,7 +173,7 @@ app {
     }
 
     .main > div {
-        padding-left: 2rem !important;
+/*        padding-left: 2rem !important;*/
         padding-right: 1.5rem !important;
     }
 
