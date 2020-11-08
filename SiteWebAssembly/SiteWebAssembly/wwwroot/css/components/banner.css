@@ -1,56 +1,17 @@
-﻿*{
-  font-family: "Dosis",sans-serif;
+﻿.banner {
+    background: #000000 url(../../img/BG.jpg) no-repeat top center;
+    background-size: cover;
+    height: 800px;
 }
 
-@mixin centerFlex{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
+.title {
+    width: 50%;
+    height: 50%;
 }
 
-@mixin createButton($width, $height, $radius, $gradientFirst, $gradientThird, $shadowColor) {
-    width: $width;
-    height: $height;
-    border-radius: $radius;
-    background-image: linear-gradient( 135deg, $gradientFirst 0%, $gradientThird 100%);
-    box-shadow: 0 20px 30px -6px $shadowColor;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
+.title h1 {
+    font-size: 80px;
+    position: relative;
+    top: 300px;
     color: white;
-}
-
-.container{
-  @include centerFlex;
-  height: 97vh;
-  h1{
-    background: linear-gradient(to right, #FEC163 0%, #DE4313 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .button{
-    transition: all .3s ease-in-out;
-    &:nth-child(2){
-      @include createButton(150px, 60px, 50px,#E2B0FF,#9F44D3, rgba(171,88,219,0.5));
-    }
-    &:nth-child(3){
-      @include createButton(150px, 60px, 50px,#81FBB8,#28C76F, rgba(60,211,128,0.5));
-    }
-    &:nth-child(4){
-      @include createButton(150px, 60px, 50px,#ABDCFF,#0396FF, rgba(30,161,255,0.5));
-    }
-    &:nth-child(5){
-      @include createButton(150px, 60px, 50px,#FEB692,#EA5455, rgba(238,103,97,0.5));
-    }
-    &:hover{
-      transform:translatey(10px);
-      box-shadow: none;
-    }
-    &:active{
-      opacity: 0.5;
-    }
-  }
 }
