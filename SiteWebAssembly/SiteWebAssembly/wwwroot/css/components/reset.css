@@ -1,0 +1,72 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #fff;
+    background: #1F1919 url(../../img/BG.png) no-repeat top center;
+    background-size: cover;
+
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+    margin-bottom: 0;
+}
+
+img {
+    width: auto;
+    max-width: 100%;
+    display: block;
+}
+
+button {
+    cursor: pointer !important;
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+a {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+a:hover,
+a:active,
+a:focus {
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+::-webkit-scrollbar {
+    height: 4px;
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #0089E4;
+    border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #0089E4;
+}
