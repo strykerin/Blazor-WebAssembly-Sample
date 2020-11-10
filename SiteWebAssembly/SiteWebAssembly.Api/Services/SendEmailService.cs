@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SiteWebAssembly.Api.Services
 {
-    public class SendEmailService
+    public class SendEmailService : ISendEmailService
     {
         private readonly ISendGridClient _sendGridClient;
 
