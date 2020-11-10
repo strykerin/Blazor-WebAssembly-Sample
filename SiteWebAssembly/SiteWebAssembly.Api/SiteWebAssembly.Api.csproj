@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="SendGrid" Version="9.21.1" />
+    <PackageReference Include="SendGrid.Extensions.DependencyInjection" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
