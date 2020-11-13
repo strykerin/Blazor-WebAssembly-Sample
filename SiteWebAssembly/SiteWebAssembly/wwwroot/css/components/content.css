@@ -9,5 +9,6 @@
 }
 
 .second {
-    float: right;
+    margin-left: auto;
+    margin-bottom: 2rem;
 }
