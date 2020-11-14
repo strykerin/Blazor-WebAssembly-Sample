@@ -3,6 +3,7 @@
 @import "components/header.css";
 @import "components/content.css";
 @import "components/sendemail.css";
+@import "components/textabout.css";
 @import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
