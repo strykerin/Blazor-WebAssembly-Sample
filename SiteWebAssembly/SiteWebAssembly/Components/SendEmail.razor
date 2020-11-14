@@ -1,0 +1,49 @@
+﻿<div class="container send-email">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h1>Lorem ipsum</h1>
+            <p>Lorem ipsum dolor sit amet</p>
+        </div>
+        <div class="col-12 col-md-6">
+            <EditForm class="form-contact" Model="@contact" OnValidSubmit="@HandleValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="form-group">
+                    <InputText class="form-control" placeholder="Name" @bind-Value="contact.Name" />
+                </div>
+                <div class="form-group">
+                    <InputText class="form-control" placeholder="Email" @bind-Value="contact.Email" />
+                </div>
+                <div class="form-group position-relative">
+                    <InputTextArea class="form-control" placeholder="Message"
+                    @bind-Value="contact.Message" />
+                </div>
+                <div>
+                    @if (!string.IsNullOrEmpty(message))
+                    {
+                        <p>@message</p>
+                    }
+                    <button type="submit" class="button">Send email</button>
+                </div>
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@inject EmailService EmailService
+@code {
+    private string message = string.Empty;
+    private Contact contact = new Contact();
+
+    private async Task HandleValidSubmit()
+    {
+        bool response = await EmailService.SendEmail(contact);
+        if (response)
+        {
+            message = "Message sent!";
+        }
+        else
+        {
+            message = "There was an error sending the message";
+        }
+    }
+}

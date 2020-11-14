@@ -1,0 +1,14 @@
+﻿.content-text {
+    width: 50%;
+    margin-top: 50px;
+}
+
+.content-text p {
+    font-size: larger;
+    text-align: center;
+}
+
+.second {
+    margin-left: auto;
+    margin-bottom: 2rem;
+}

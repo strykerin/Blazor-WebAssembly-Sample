@@ -1,0 +1,13 @@
+﻿.banner {
+    background: #000000 url(../../img/BG.jpg) no-repeat top center;
+    background-size: cover;
+    height: 800px;
+}
+
+.banner h1 {
+    font-size: 80px;
+    position: relative;
+    top: 300px;
+    text-align: center;
+    color: white;
+}

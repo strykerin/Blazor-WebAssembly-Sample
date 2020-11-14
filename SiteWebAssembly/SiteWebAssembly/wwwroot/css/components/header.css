@@ -1,0 +1,29 @@
+﻿.header-menu a,
+.header-menu button {
+    color: #000;
+    font-size: 26px;
+}
+
+.header-menu button:hover,
+.header-menu button:active,
+.header-menu button:focus {
+    text-decoration: underline !important;
+}
+.header-menu li {
+    margin-left: auto;
+    margin-right: 0px;
+    display: inline;
+}
+
+.header-menu li:first-child {
+    margin-left: 0;
+}
+
+.header-container {
+    margin-right: 0px;
+    padding-left: 20%;
+}
+
+.navbar-header {
+    margin-left: auto;
+}
