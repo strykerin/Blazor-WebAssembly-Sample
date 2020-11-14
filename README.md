@@ -61,6 +61,76 @@ The service class above requires the ```HttpClient``` class, so we will add it a
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44345") });
 ```
 
+## ASP.NET Core backend Web API
+### Enable CORS in Backend Web API
+Browsers have a security feature that prevents an application from making requests to a different domain than the one that served the application. If you try to call the backend from the blazor webassembly without configuring the server you'll get an error. In order to solve this, the endpoint in the backend must enable cross-origin resource sharing (CORS).
+
+In order to enable it on the backend, you add in the ```Configure``` method in ```Startup.cs``` in the the folowing middleware **after** the ```UseRouting```, but **before** the UseAuthorization as shown below:
+
+```
+app.UseRouting();
+
+// Enable cors
+app.UseCors(policyName => policyName.WithOrigins("https://localhost:5001")
+                                    .AllowAnyMethod()
+                                    .WithHeaders(HeaderNames.ContentType));
+
+app.UseAuthorization();
+```
+
+### Add SendGrid Nuget Package
+The service we'll be using to send email is SendGrid. We will use from SendGrid two nuget packages, one to send the emails and the other one to allow us to have access to the ```ISendGridClient``` interface that is injected in the DI container.
+
+To download both nuget package, run this dotnet cli commands inside the Web Api project folder location:
+
+```
+dotnet add package Sendgrid --version 9.21.1
+dotnet add package SendGrid.Extensions.DependencyInjection --version 1.0.0
+```
+
+Now that we have both of this packages, first we register the service in ```Startup.cs```:
+```
+services.AddSendGrid(opt => opt.ApiKey = Configuration["SendGrid:ApiKey"]);
+```
+
+To create the ```SendEmail``` service, we will need the ```ISendGridClient``` implementation that we will have access via the constructor:
+
+```
+public class SendEmailService : ISendEmailService
+{
+    private readonly ISendGridClient _sendGridClient;
+
+    public SendEmailService(ISendGridClient sendGridClient)
+    {
+        _sendGridClient = sendGridClient ?? throw new ArgumentNullException(nameof(sendGridClient));
+    }
+    ...
+}
+```
+
+With this interface, we can then create the method that will be sending email when the requests arrives from the Blazor WebAssembly:
+
+```
+public async Task<bool> SendEmail(Contact contact)
+{
+    SendGridMessage msg = new SendGridMessage();
+    EmailAddress from = new EmailAddress(contact.Email, contact.Name);
+    List<EmailAddress> recipients = new List<EmailAddress> { new EmailAddress("your@email.com", "Your Name") };
+
+    msg.SetSubject("A new user has registered");
+    msg.SetFrom(from);
+    msg.AddTos(recipients);
+    msg.PlainTextContent = contact.Message;
+
+    Response response = await _sendGridClient.SendEmailAsync(msg);
+    if (Convert.ToInt32(response.StatusCode) >= 400)
+    {
+        return false;
+    }
+    return true;
+}
+```
+
 
 ## Reference
 Blazor Layouts:
@@ -74,3 +144,8 @@ https://github.com/mikoskinen/Blazor.Animate
 Blazor dependency injection
 
 https://docs.microsoft.com/en-us/aspnet/core/blazor/fundamentals/dependency-injection?view=aspnetcore-5.0
+
+
+Call a web API from ASP.NET Core Blazor
+
+https://docs.microsoft.com/en-us/aspnet/core/blazor/call-web-api?view=aspnetcore-3.1#cross-origin-resource-sharing-cors
