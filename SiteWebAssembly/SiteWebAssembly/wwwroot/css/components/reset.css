@@ -31,7 +31,6 @@ img {
 
 button {
     cursor: pointer !important;
-    background-color: transparent !important;
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
