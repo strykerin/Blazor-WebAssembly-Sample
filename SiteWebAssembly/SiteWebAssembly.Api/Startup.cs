@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
 using SendGrid.Extensions.DependencyInjection;
 using SiteWebAssembly.Api.Services;
 
@@ -36,6 +37,11 @@ namespace SiteWebAssembly.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            // Enable cors
+            app.UseCors(policyName => policyName.WithOrigins("https://localhost:5001")
+                                                .AllowAnyMethod()
+                                                .WithHeaders(HeaderNames.ContentType));
 
             app.UseAuthorization();
 
