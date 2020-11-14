@@ -4,14 +4,10 @@
     height: 800px;
 }
 
-.title {
-    width: 50%;
-    height: 50%;
-}
-
-.title h1 {
+.banner h1 {
     font-size: 80px;
     position: relative;
     top: 300px;
+    text-align: center;
     color: white;
 }
