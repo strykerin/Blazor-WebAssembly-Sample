@@ -10,7 +10,8 @@
     text-decoration: underline !important;
 }
 .header-menu li {
-    margin-left: 30px;
+    margin-left: auto;
+    margin-right: 0px;
     display: inline;
 }
 
@@ -21,4 +22,8 @@
 .header-container {
     margin-right: 0px;
     padding-left: 20%;
+}
+
+.navbar-header {
+    margin-left: auto;
 }
