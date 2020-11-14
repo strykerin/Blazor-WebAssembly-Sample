@@ -14,7 +14,7 @@ namespace SiteWebAssembly
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https://localhost:44345") });
-            builder.Services.AddHttpClient<IEmailService, EmailService>(client => client.BaseAddress = new Uri("https://localhost:44345"));
+            builder.Services.AddHttpClient<IEmailService, EmailService>();
             builder.Services.AddScoped<EmailService>();
 
             await builder.Build().RunAsync();
