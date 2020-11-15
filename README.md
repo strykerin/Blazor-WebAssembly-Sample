@@ -9,7 +9,7 @@ The solution contains 3 projects:
 ## Blazor WebAssembly
 For every Blazor WebAssembly project, the entry point for the application is the ```App.razor``` component. If the path the application being requested exists, the page is then rendered in the ```@Body``` property in the ```MainLayout.razor``` component.
 
-The ```MainLayout.razor``` component is where we can specify the components that will be shared across multiple pages, such a website header and footer. In our case we create a ```Header``` component that is referenced in the ```MainLayout.razor``` as show below:
+The ```MainLayout.razor``` component is where we can specify the components that will be shared across multiple pages, such as a website header and footer. In our case, we create a header component called ```MainHeader.razor``` that is referenced in the ```MainLayout.razor``` as shown below:
 
 ```
 @inherits LayoutComponentBase
@@ -24,7 +24,7 @@ The ```MainLayout.razor``` component is where we can specify the components that
 ```
 
 ### Create components to better organize a page
-In order to better organize this application, I have created multiple components and then referenced them in order to build a page instead of having a very large component. An example of this can be seen here below in the ```Index.razor``` page where it references 3 components:
+In order to better organize this application, I have created multiple components and then referenced them in the page instead of having a very large component. An example of this can be seen here below in the ```Index.razor``` page where it references 3 components:
 
 ```
 @page "/"
@@ -65,7 +65,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("https:/
 ### Enable CORS in Backend Web API
 Browsers have a security feature that prevents an application from making requests to a different domain than the one that served the application. If you try to call the backend from the blazor webassembly without configuring the server you'll get an error. In order to solve this, the endpoint in the backend must enable cross-origin resource sharing (CORS).
 
-In order to enable it on the backend, you add in the ```Configure``` method in ```Startup.cs``` in the the folowing middleware **after** the ```UseRouting```, but **before** the UseAuthorization as shown below:
+In order to enable it on the backend, you add in the ```Configure``` method in ```Startup.cs```  the folowing middleware **after** the ```UseRouting```, but **before** the ```UseAuthorization``` as shown below:
 
 ```
 app.UseRouting();
